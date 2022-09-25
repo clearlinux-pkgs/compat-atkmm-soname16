@@ -4,7 +4,7 @@
 #
 Name     : compat-atkmm-soname16
 Version  : 2.28.0
-Release  : 15
+Release  : 16
 URL      : https://download.gnome.org/sources/atkmm/2.28/atkmm-2.28.0.tar.xz
 Source0  : https://download.gnome.org/sources/atkmm/2.28/atkmm-2.28.0.tar.xz
 Summary  : C++ binding for the ATK accessibility toolkit, uninstalled
@@ -76,15 +76,15 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1611166558
+export SOURCE_DATE_EPOCH=1664141036
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
-export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
+export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=auto "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
+export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=auto "
 %configure --disable-static
 make  %{?_smp_mflags}
 
@@ -96,11 +96,11 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1611166558
+export SOURCE_DATE_EPOCH=1664141036
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/compat-atkmm-soname16
-cp %{_builddir}/atkmm-2.28.0/COPYING %{buildroot}/usr/share/package-licenses/compat-atkmm-soname16/9a1929f4700d2407c70b507b3b2aaf6226a9543c
-cp %{_builddir}/atkmm-2.28.0/COPYING.tools %{buildroot}/usr/share/package-licenses/compat-atkmm-soname16/06877624ea5c77efe3b7e39b0f909eda6e25a4ec
+cp %{_builddir}/atkmm-%{version}/COPYING %{buildroot}/usr/share/package-licenses/compat-atkmm-soname16/9a1929f4700d2407c70b507b3b2aaf6226a9543c || :
+cp %{_builddir}/atkmm-%{version}/COPYING.tools %{buildroot}/usr/share/package-licenses/compat-atkmm-soname16/06877624ea5c77efe3b7e39b0f909eda6e25a4ec || :
 %make_install
 
 %files
